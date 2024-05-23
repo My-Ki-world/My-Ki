@@ -19,7 +19,8 @@ document.getElementById('send-button').addEventListener('click', async function(
             });
 
             if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
+                const errorDetails = await response.text();
+                throw new Error(`Network response was not ok: ${response.statusText} - ${errorDetails}`);
             }
 
             const data = await response.json();
@@ -27,4 +28,16 @@ document.getElementById('send-button').addEventListener('click', async function(
             appendMessage('ai', aiMessage);
         } catch (error) {
             console.error('Error:', error);
-            app
+            appendMessage('ai', `Fehler bei der Kommunikation mit der API: ${error.message}`);
+        }
+    }
+});
+
+function appendMessage(sender, message) {
+    const chatBox = document.getElementById('chat-box');
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message', sender);
+    messageElement.textContent = message;
+    chatBox.appendChild(messageElement);
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
