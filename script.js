@@ -5,13 +5,14 @@ document.getElementById('send-button').addEventListener('click', async function(
         document.getElementById('input-field').value = '';
 
         try {
-            const response = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
+            const response = await fetch('https://api.openai.com/v1/completions', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearersk-rCzNuaV0BaKgEsObjcS1T3BlbkFJbquLEwazbRslNzscj5Xg'  // Achte darauf, den korrekten API-Schlüssel einzufügen
+                    'Authorization': 'Bearer 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'  // Verwende deinen API-Schlüssel
                 },
                 body: JSON.stringify({
+                    model: 'text-davinci-003',  // Sicherstellen, dass das Modell korrekt ist
                     prompt: userInput,
                     max_tokens: 150
                 })
