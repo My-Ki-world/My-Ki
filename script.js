@@ -1,13 +1,25 @@
-document.getElementById('send-button').addEventListener('click', function() {
+document.getElementById('send-button').addEventListener('click', async function() {
     const userInput = document.getElementById('input-field').value;
     if (userInput.trim() !== '') {
         appendMessage('user', userInput);
         document.getElementById('input-field').value = '';
 
-        // Simulate AI response
-        setTimeout(() => {
-            appendMessage('ai', 'Dies ist eine simulierte Antwort von My-KI.');
-        }, 1000);
+        // API-Anfrage an OpenAI senden
+        const response = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer YOUR_OPENAI_API_KEY'
+            },
+            body: JSON.stringify({
+                prompt: userInput,
+                max_tokens: 150
+            })
+        });
+
+        const data = await response.json();
+        const aiMessage = data.choices[0].text.trim();
+        appendMessage('ai', aiMessage);
     }
 });
 
