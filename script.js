@@ -9,7 +9,7 @@ document.getElementById('send-button').addEventListener('click', async function(
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer sk-dfgdnlC2cNdfgdfgdfgdfgdfgFJdNHxpp2x7JXuvfdfg5'  // Verwende deinen API-Schlüssel
+                    'Authorization': 'Bearer sk-proj-59SMf1HihvkK2ztAL6OHT3BlbkFJuJjH0XjfXSId1gCFTSLI'  // Verwende deinen API-Schlüssel
                 },
                 body: JSON.stringify({
                     model: 'text-davinci-003',  // Sicherstellen, dass das Modell korrekt ist
