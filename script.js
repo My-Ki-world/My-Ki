@@ -9,7 +9,7 @@ document.getElementById('send-button').addEventListener('click', async function(
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer sk-proj-62IijJHzhtFo9v4lMMXYT3BlbkFJBhgkNBqyWS1u1EsrSQE7'
+                'Authorization': 'sk-proj-62IijJHzhtFo9v4lMMXYT3BlbkFJBhgkNBqyWS1u1EsrSQE7'
             },
             body: JSON.stringify({
                 prompt: userInput,
