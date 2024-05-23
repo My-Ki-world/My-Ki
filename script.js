@@ -27,16 +27,4 @@ document.getElementById('send-button').addEventListener('click', async function(
             appendMessage('ai', aiMessage);
         } catch (error) {
             console.error('Error:', error);
-            appendMessage('ai', 'Fehler bei der Kommunikation mit der API.');
-        }
-    }
-});
-
-function appendMessage(sender, message) {
-    const chatBox = document.getElementById('chat-box');
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('message', sender);
-    messageElement.textContent = message;
-    chatBox.appendChild(messageElement);
-    chatBox.scrollTop = chatBox.scrollHeight;
-}
+            app
